@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private RecyclerView mRecyclerView;
 
-    private MaterialDesign[] mMaterialDesigns = {new MaterialDesign("aaa", R.drawable.aaa), new MaterialDesign("bbb", R.drawable.bbb), new MaterialDesign("ccc", R.drawable.hhh), new MaterialDesign("ddd", R.drawable.img1), new MaterialDesign("eee", R.drawable.img2), new MaterialDesign("fff", R.drawable.img3), new MaterialDesign("ggg", R.drawable.img4), new MaterialDesign("hhh", R.drawable.img5)};
+    private MaterialDesign[] mMaterialDesigns = {new MaterialDesign("Gal Gadot", R.drawable.aaa), new MaterialDesign("tattoo", R.drawable.bbb), new MaterialDesign("Julie", R.drawable.hhh), new MaterialDesign("Look", R.drawable.img1), new MaterialDesign("Journey", R.drawable.img2), new MaterialDesign("beauty", R.drawable.img3), new MaterialDesign("shoes", R.drawable.img4), new MaterialDesign("Korea", R.drawable.img5)};
 
     private List<MaterialDesign> mMaterialDesignList = new ArrayList<>();
 
