@@ -9,24 +9,37 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private FloatingActionButton fab;
+    private RecyclerView mRecyclerView;
+
+    private MaterialDesign[] mMaterialDesigns = {new MaterialDesign("aaa", R.drawable.aaa), new MaterialDesign("bbb", R.drawable.bbb), new MaterialDesign("ccc", R.drawable.hhh), new MaterialDesign("ddd", R.drawable.img1), new MaterialDesign("eee", R.drawable.img2), new MaterialDesign("fff", R.drawable.img3), new MaterialDesign("ggg", R.drawable.img4), new MaterialDesign("hhh", R.drawable.img5)};
+
+    private List<MaterialDesign> mMaterialDesignList = new ArrayList<>();
+
+    private MaterialAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews();
+        initMaterial();
     }
 
     private void initViews() {
@@ -61,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
                 }).show();
             }
         });
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        mRecyclerView.setLayoutManager(layoutManager);
+        adapter = new MaterialAdapter(mMaterialDesignList);
+        mRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -88,5 +107,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    private void initMaterial() {
+        mMaterialDesignList.clear();
+        for (int i = 0; i < 50; i++) {
+            Random random = new Random();
+            int index = random.nextInt(mMaterialDesigns.length);
+            mMaterialDesignList.add(mMaterialDesigns[index]);
+        }
     }
 }
