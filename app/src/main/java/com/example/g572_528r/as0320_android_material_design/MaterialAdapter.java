@@ -1,6 +1,7 @@
 package com.example.g572_528r.as0320_android_material_design;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,7 +45,19 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.ViewHo
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.material_item, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                MaterialDesign materialDesign = mMaterialDesignList.get(position);
+                Intent intent = new Intent(mContext, MaterialActivity.class);
+                intent.putExtra(MaterialActivity.MATERIAL_NAME, materialDesign.getName());
+                intent.putExtra(MaterialActivity.MATERIAL_IMAGE_ID, materialDesign.getImageId());
+                mContext.startActivity(intent);
+            }
+        });
+        return holder;
     }
 
     @Override
